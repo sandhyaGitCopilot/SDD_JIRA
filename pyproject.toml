@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jira-testgen"
+version = "0.1.0"
+description = "Turn a Jira Cloud story into reviewed, ready-to-use manual test cases."
+requires-python = ">=3.11"
+dependencies = [
+    "requests>=2.31",
+    "PyYAML>=6.0",
+    "python-dotenv>=1.0",
+]
+
+# No LLM SDK is listed here, and none may be added: test case content is written
+# by the engineer's Claude Code session, never by a paid model credential
+# (FR-010, SC-012). tests/unit/test_no_llm_dependency.py enforces this.
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "responses>=0.25",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+jira-testgen = "jira_testgen.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
