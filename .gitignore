@@ -1,0 +1,33 @@
+# Real credentials must never be committed (FR-031).
+.env
+.env.local
+
+# Draft files are working artifacts, not source. Everything needed to resume or
+# deduplicate a run is read back from Jira, so nothing here is worth tracking
+# (FR-026b).
+drafts/*
+!drafts/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+
+# Local working artifacts, not source. Never publish these.
+AI-CONTEXT-EXPORT.md
+*.docx
+~$*
